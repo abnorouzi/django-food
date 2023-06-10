@@ -1,0 +1,52 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} نمودار مشتریان برتر {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %} مشتریان برتر {% endblock %}
+{% block content %}
+
+<!-- Line chart -->
+            <div class="card card-primary card-outline mx-2">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-bar-chart-o"></i>
+                  نمودار خطی
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="line-chart" style="height: 300px;"></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+            <!-- /.card -->
+
+            <!-- Line chart -->
+            <div class="card card-primary card-outline mx-2">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-bar-chart-o"></i>
+                  نمودار دایره
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="donut-chart" style="height: 300px;"></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+            <!-- /.card -->
+
+
+{% endblock %}

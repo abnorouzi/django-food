@@ -1,0 +1,7 @@
+{% autoescape off %}
+    با درود فراوان {{ user }}
+    <h3 class="rtl">لطفا جهت اتمام ثبت نام خود بر رو لینک زیر کلیک کنید</h3>
+    http://{{ domain }}{% url 'activate' uid64=uid token=token %}
+    <h6 class="rtl">با سپاس فراوان از اینکه ما را انتخاب کردید</h6>
+    تیم رستوران آبی
+{% endautoescape %}

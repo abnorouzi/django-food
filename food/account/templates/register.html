@@ -1,0 +1,87 @@
+{% extends 'auth_base.html' %}
+{% block title %}ثبت نام{% endblock %}
+{% block content %}
+
+  
+  <div class="card m-4">
+    <div class="card-header bg-info">
+        <p class="login-box-msg">ثبت نام کاربر جدید</p>
+    </div>
+    <div class="card-body">
+      <form action="" method="post" novalidate>{% csrf_token %}
+       <div class="row">
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <p class="message">{{ form.error }}</p>
+            {{ form.first_name.errors }}
+            {{ form.first_name }}
+            <div class="input-group-append">
+              <span class="fa fa-user input-group-text"></span>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            {{ form.last_name.errors }}
+            {{ form.last_name }}
+            <div class="input-group-append">
+              <span class="fa fa-user input-group-text"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+        <div class="input-group mb-3">
+          {{ form.username.errors }}
+          {{ form.username }}
+          <div class="input-group-append">
+            <span class="fa fa-user input-group-text"></span>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          {{ form.email.errors }}
+          {{ form.email }}
+          <div class="input-group-append">
+            <span class="fa fa-envelope input-group-text"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-group mb-3">
+          {{ form.password1.errors }}
+          {{ form.password1 }}
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          {{ form.password2.errors }}
+          {{ form.password2 }}
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> با <a href="#">شرایط</a> موافق هستم
+            </label>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <button type="submit" class="btn btn-primary btn-block">ثبت نام</button>
+        </div>
+        <div class="col-4 text-center">
+          <a href="{% url 'login' %}" class="text-center">من قبلا ثبت نام کرده ام</a>
+        </div>
+      </div>
+      </form>
+      
+    </div>
+    
+    <!-- /.card -->  
+</div>
+<div class="card-footer text-secondary m-4 text-center">
+  از اینکه در حال پیوستن به خانواده رستوران آبی هستید صمیمانه خوشحالیم
+</div>
+{% endblock %}

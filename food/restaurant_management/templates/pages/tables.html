@@ -1,0 +1,107 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} مدیریت میزها {% endblock %}
+{% block page_name %}
+مدیر
+{% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %}مدیریت میزها{% endblock %}
+{% block content %}
+<div class="row p-2">
+        <div class="col-md-4">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">افزودن میز</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                <div class="card-body">
+                  <form role="form">
+                  <div class="form-group">
+                    <label for="username">نام مشتری</label>
+                    <input type="email" class="form-control" id="username">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">شماره سفارش</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                    <div class="form-group">
+                    <label>شماره میز</label>
+                    <select class="form-control">
+                      <option>گزینه ۱</option>
+                      <option>گزینه ۲</option>
+                      <option>گزینه ۳</option>
+                      <option>گزینه ۴</option>
+                      <option>گزینه ۵</option>
+                    </select>
+                  </div>
+                  <div class="card-footer text-center">
+                  <button type="submit" class="btn btn-primary ce">ذخیره</button>
+                  </div>
+                  </form>
+                </div>
+            </div>
+
+                <!-- /.card-body -->
+
+            </div>
+        </form>
+  <!--show users list -->
+    <div class="col-md-7">
+            <div class="card">
+              <div class="card-header bg-warning">
+                <h3 class="card-title">وضعیت میز ها</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover table-bordered text-center">
+                  <thead>
+                  <tr>
+                    <th class="col-sm-1">میز</th>
+                    <th class="col-md-3">نام مشتری</th>
+                    <th class="col-sm-3">شماره سفارش</th>
+                    <th class="col-sm-1">وضعیت</th>
+                    <th class="col-sm-1">اصلاح</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>101</td>
+                    <td>محمد</td>
+                    <td>صندوقدار</td>
+                    <td class="text-center">در حال انتظار</td>
+                    <td class="text-center">
+                      <a href="#"><i class="fa fa-trash" style="color:red"></i></a>
+                      <a href="#"><i class="fa fa-edit" style="color:green"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>۲۱۹</td>
+                    <td>حسام</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge bg-danger">در حال بررسی</span></td>
+                    <td>امفهوم از صنعت چاپ</td>
+                  </tr>
+                  <tr>
+                    <td>۶۵۷</td>
+                    <td>رضا</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge badge-primary">تایید شده</span></td>
+                    <td>لور از صنعت چاپ</td>
+                  </tr>
+                  <tr>
+                    <td>۱۷۵</td>
+                    <td>پرهام</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge badge-danger">رد شده</span></td>
+                    <td> از صنعت چاپ</td>
+                  </tr>
+                </tbody></table>
+              </div>
+              <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+    </div>
+  <!--end sow uses list-->
+  </div>
+{% endblock %}

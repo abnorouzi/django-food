@@ -1,0 +1,136 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} سایر افزودنی ها {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %}افزودنی ها{% endblock %}
+{% block content %}
+
+
+
+<div class="row mx-2">
+    <div class="col-4">
+      <div class="card">
+      <div class="card-header bg-info mb-2">
+          <h3 class="card-title">افزودن مخلفات</h3>
+      </div>
+      <form role="form">
+      <div class="cad-body">
+        <div class="pretty p-icon p-curve p-jelly">
+            <input type="checkbox" onchange="document.getElementById('txt_table').disabled = !this.checked;
+                document.getElementById('btn_table').disabled = !this.checked;" />
+            <div class="state p-primary">
+                <i class="icon fas fa-check"></i>
+                <label style="direction:ltr">ایجاد دسته جدید</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control px-2 bg-secondary" id="tbl_bg">
+              <input type="text" class="w-50" id="txt_table" disabled>
+              <button type="submit" id="btn_table" class="btn-sm btn-success mr-4" disabled>اضافه کن</button>
+            </div>
+        </div>
+        <div class="form-group mt-2 mx-2">
+            <select class="form-control">
+                <option class="option" selected>یک دسته را انتخاب کنید</option>
+                <option class="option">cat 2</option>
+                <option class="option">cat 3</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" class="form-control" id="name" placeholder="نام">
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" class="form-control" id="price" placeholder="قیمت">
+        </div>
+        <div class="form-group mt-3 text-center">
+            <button type="submit" class="btn-sm btn-success">ذخیره کن</button>
+        </div>
+      </div>
+     </form>
+     </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card">
+       <div class="card-header bg-warning">
+         <h3 class="card-title">لیست خوراک</h3>
+       <div class="card-tools">
+         <div class="input-group input-group-sm" style="width: 150px;">
+           <input type="text" name="table_search" class="form-control float-right" placeholder="جستجو">
+         <div class="input-group-append">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search" style="color:green"></i></button>
+         </div>
+        </div>
+       </div>
+      </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover table-bordered text-center">
+                  <thead>
+                  <tr>
+                    <th class="col-sm-1">شماره</th>
+                    <th class="col-md-3">نام مخلفات</th>
+                    <th class="col-sm-3">دسته</th>
+                      <th class="col-sm-3">قیمت</th>
+                    <th class="col-sm-1">تغییر</th>
+                    <th class="col-sm-1">حذف</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>10</td>
+                    <td>چلو مرغ</td>
+                    <td>غذا ها</td>
+                    <td>20000</td>
+                    <td class="text-center"><a href="#"><i class="fa fa-edit" style="color:green"></i></a></td>
+                    <td class="text-center"><a href="#"><i class="fa fa-trash" style="color:red"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>۲۱۹</td>
+                    <td>حسام</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge bg-danger">در حال بررسی</span></td>
+                    <td>لورم ایپ چاپ</td>
+                  </tr>
+                  <tr>
+                    <td>۶۵۷</td>
+                    <td>رضا</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge badge-primary">تایید شده</span></td>
+                    <td>لورم ایپسو</td>
+                  </tr>
+                  <tr>
+                    <td>۱۷۵</td>
+                    <td>پرهام</td>
+                    <td>۱۱-۷-۲۰۱۴</td>
+                    <td><span class="badge badge-danger">رد شده</span></td>
+                    <td>لورم </td>
+                  </tr>
+                </tbody></table>
+              </div>
+              <!-- /.card-body -->
+              <!-- pagination -->
+              <div class="card-footer">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center bg-warning">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- end pagination -->
+            </div>
+            <!-- /.card -->
+    </div>
+</div>
+{% endblock %}

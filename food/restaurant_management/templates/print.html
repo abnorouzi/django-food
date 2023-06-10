@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>پرینت فاکتور</title>
+    <!-- bootstrap rtl -->
+  <link rel="stylesheet" href="{% static 'restaurant/plugins/bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="row">
+<div class="col-4"></div>
+<div class="card col-4 text-center border-primary border-3 my-3">
+    {% for f in factor %}
+    <div class="card-header">
+        شماره فاکتور : {{ f.id }}
+    </div>
+    <div class="card-body">
+        سفارشات
+
+     {% for o in f.orders.all %}
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3 text-center">
+                {{o.quantity}}
+            </div>
+            <div class="col-3 text-center">
+                {{o.product}}
+            </div>
+            <div class="col-3"></div>
+        </div>
+     {% endfor %}
+        <p></p>
+        <div class="cord-footer">
+            {{f.get_total_price}} : مبلغ قابل پرداخت
+        </div>
+{% endfor %}
+    </div>
+</div>
+<div class="col-4"></div>
+</div>
+
+<!-- Bootstrap 4 -->
+<script src="{% static 'restaurant/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

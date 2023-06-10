@@ -1,0 +1,127 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} ثبت سفارش {% endblock %}
+{% block breadcrumb %} ثبت سفارش {% endblock %}
+{% block content %}
+{% load jformat %}
+    <div class="card card-primary mx-4">
+      <div class="card-header text-center">
+          <form action="{% url 'create_factor' %}" role="form" method="post" novalidate>{% csrf_token %}
+            <input type="submit" class="btn btn-success card-tite" value="+ ایجاد سفارش جدید +">
+          </form>
+      </div>
+
+      <div class="cad-body">
+      {% if factor %}
+      <form action="" role="form" method="post" novalidate>{% csrf_token %}
+       <div class="row">
+        <div class="col-md-3 m-2">
+            <div class="form-group">
+                {{ form.product}}
+            </div>
+        </div>
+        <input type="hidden" id="facid" name="facid" value="{{ factor.id }}" >
+        <div class="col-3 m-2">
+            <div class="form-group">
+                {{ form.quantity }}
+            </div>
+        </div>
+        <div class="form-group col-3 mt-2 text-center">
+            <input type="submit" class="btn-sm btn-success" value="افزودن">
+        </div>
+      </div>
+      </form>
+      {% endif %}
+      </div>
+
+    </div>
+
+
+    <div class="card m-2">
+     <div class="card-header bg-warning text-center">
+         <h3 class="card-title text-info">مشاهده فاکتور</h3>
+     </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-7 m-2">
+            <div class="card">
+                <div class="card-header">
+                    فاکتور شماره : {{ factor.id }}
+                </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <th style="width: 10px"><a href=""><span class="fa fa-trash"></span></a></th>
+                    <th class="text-center">آیتم ها</th>
+                    <th class="text-center">تعداد</th>
+                    <th class="text-center" style="width: 40px">قیمت</th>
+                  </tr>
+                  {% for o in factor.orders.all %}
+                     <tr>
+                         <td>
+                             <form action="{% url 'del_order' factor.id o.id %}" method="post">{% csrf_token %}
+                                 <button type="submit" class="btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                             </form>
+                         </td>
+                         <td>{{ o.product.name }}</td>
+                         <td>{{ o.quantity }}</td>
+                         <td>{{ o.get_total_price }}</td>
+                     </tr>
+                  {% endfor %}
+                </tbody></table>
+              </div>
+              <!-- /.card-body -->
+            <!-- /.card -->
+        </div>
+      </div>
+      <div class="card col-md-4 text-center mt-2">
+          <div class="card-header">
+             <h3 class="text-success">مبلغ کل فاکتور : {{ factor.get_total_price }}</h3>
+          </div>
+          <div class="card-body">
+          <form action="">
+            <div class="form-group">
+            <select class="select2 w-50">
+                {% for cc in c %}
+                    <option>{{ cc }}</option>
+                {% endfor %}
+            </select>
+            <a href="{% url 'res_customers' %}" class="btn-sm btn-success mx-1">+</a>
+           </div>
+           <div class="form-group my-4">
+            <select class="select2 w-50">
+                <option>نقدی</option>
+                <option>کارت خوان</option>
+                <option>اینترنتی</option>
+                <option>پرداخت در محل</option>
+            </select>
+            <a href="#" class="mx-3"></a>
+           </div>
+           <div class="form-group my-4">
+               <select class="select2 w-50">
+                <option>ارسال با پیک</option>
+                <option>سالن</option>
+                <option>تحویل در رستوران</option>
+            </select>
+            <a href="#" class="mx-3"></a>
+           </div>
+              <div class="form-group my-4">
+                  <button class="btn btn-success mx-1">پرداخت</button>
+              </div>
+          </form>
+           <div class="form-group my-4">
+               {% if factor %}
+               <form action="{% url 'del_factor' factor.id %}" method="post">{% csrf_token %}
+                   <a href="{% url 'print_factor' factor.id %}" class="btn btn-warning">چاپ فاکتور</a>
+                   <button class="btn btn-danger m-2">لغو سفارش</button>
+               </form>
+               {% endif %}
+           </div>
+         </div>
+      </div>
+    </div>
+{% endblock %}
+

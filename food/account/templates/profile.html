@@ -1,0 +1,86 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} پروفایل کاربری {% endblock %}
+{% block breadcrumb %}پروفایل{% endblock %}
+{% block content %}
+
+{% if messages %}
+    {% for m in messages %}
+              <div class="message col-4">
+                <div class="alert {% if m.tags %}alert-{{ m.tags }}{% endif %} alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                   {{ m }}
+                </div>
+              </div>
+    {% endfor %}
+{% endif %}
+
+<div class="card m-4">
+    <div class="card-header bg-info">
+        <p class="login-box-msg">پروفایل کاربری</p>
+    </div>
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data" novalidate>{% csrf_token %}
+       <div class="row">
+        <div class="col-4">
+            <div class="input-group mb-3">
+          {{ form.address.errors }}
+          {{ form.address }}
+          <div class="input-group-append">
+            <span class="fa fa-building input-group-text"></span>
+          </div>
+        </div>
+        </div>
+        <div class="col-4">
+        <div class="input-group mb-3">
+          {{ form.tel.errors }}
+          {{ form.tel }}
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+          </div>
+        </div>
+        <p>لوگو</p>
+          <div class="input-group mb-3">
+            {{ form.logo.errors }}
+            {{ form.logo }}
+            <div class="input-group-append">
+              <span class="fa fa-user input-group-text"></span>
+            </div>
+          </div>
+         <p>عکس پروفایل</p>
+          <div class="input-group mb-3">
+            {{ form.avatar.errors }}
+            {{ form.avatar }}
+            <div class="input-group-append">
+              <span class="fa fa-user input-group-text"></span>
+            </div>
+          </div>
+      </div>
+      <div class="col-4">
+        <div class="input-group mb-3">
+          {{ form.company.errors }}
+          {{ form.company }}
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fa fa-church"></i></span>
+          </div>
+        </div>
+        <p class="mt-4">انتخاب گروه کاری</p>
+        <div class="input-group">
+          {{ form.cat.errors }}
+          {{ form.cat }}
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-list"></i></span>
+          </div>
+        </div>
+        <div class="mt-5">
+          <button type="submit" class="btn-lg btn-primary w-100">ذخیره</button>
+        </div>
+      </div>
+      </div>
+      </form>
+
+    </div>
+
+    <!-- /.card -->
+</div>
+
+{% endblock %}

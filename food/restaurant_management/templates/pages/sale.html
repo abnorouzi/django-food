@@ -1,0 +1,38 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} نمودار فروش {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %} نمودار فروش {% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <canvas id="myChart" class="col-10"></canvas>
+ </div>
+
+<script>
+var chart_labels = JSON.parse('{{labels}}')
+var chart_data = JSON.parse('{{data}}')
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: chart_labels,
+        datasets: [{
+            label: "نمودار فروش کلی",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            fill: false,
+            data: chart_data,
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        
+    }
+});
+</script>
+
+{% endblock %}

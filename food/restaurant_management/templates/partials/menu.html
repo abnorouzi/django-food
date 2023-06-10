@@ -1,0 +1,134 @@
+ <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item {{ user_open }} has-treeview">
+              <a href="#" class="nav-link {{ user_stat }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  مدیریت کاربران
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'res_deliverer' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">پیک تحویل</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'res_customers' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">مشتریان</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">گیرنده سفارشات</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'res_tables' %}" class="nav-link {{ table_stat }}">
+                <i class="nav-icon  fa fa-chair"></i>
+                <p>
+                  مدیریت میز ها
+                </p>
+              </a>
+            </li>
+            <li class="nav-item {{ report_open }} has-treeview">
+              <a href="#" class="nav-link {{ report_stat }}">
+                <i class="nav-icon fa fa-pie-chart"></i>
+                <p>
+                  گزارشات
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'res_sale' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">نمودار فروش</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'res_best_customer' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">مشتریان برتر</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'res_best_food' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">پرفروش ترین غذا</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'res_food' %}" class="nav-link {{ item_stat }}">
+                <i class="nav-icon fa fa-cutlery"></i>
+                <p>
+                  مدیریت غذا ها
+                </p>
+              </a>
+            </li>
+            <li class="nav-item {{ order_open }} has-treeview">
+              <a href="#" class="nav-link {{ order_stat }}">
+                <i class="nav-icon fa fa-edit"></i>
+                <p>
+                   سفارشات
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'res_order' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">ثبت سفارش</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'res_pending' %}" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">پیگیری سفارش</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">ویژه</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item {{ chat_open }} has-treeview">
+              <a href="#" class="nav-link {{ chat_stat }}">
+                <i class="nav-icon fa fa-table"></i>
+                <p>
+                  پیام ها
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/tables/simple.html" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">ارسال پیام</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/tables/data.html" class="nav-link">
+                    <i class="nav-icon fas fa-angle-left" style="color:yellow"></i>
+                    <p class="text-info">مشاهده پیام ها</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+ <!-- /.sidebar-menu -->

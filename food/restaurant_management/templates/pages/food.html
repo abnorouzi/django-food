@@ -1,0 +1,117 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} مدیریت غذا {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %}مدیریت غذا{% endblock %}
+{% block content %}
+<div class="row p-2">
+        <div class="col-md-4">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">افزودن غذا</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" method="post" enctype="multipart/form-data" novalidate>{% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    {{ form.name.error }}
+                    {{ form.name }}
+                  </div>
+                  <div class="form-group">
+                    {{ form.price.error }}
+                    {{ form.price }}
+                  </div>
+                    <div class="form-group">
+                      {{ form.cat.error }}
+                      {{ form.cat }}
+                      <button type="submit" class="btn btn-success mx-5">ذخیره</button>
+                  </div>
+                  <div class="input-group">
+                    <div class="form-control bg-warning">
+                      {{ form.image.error }}
+                    {{ form.image }}
+                    </div>
+
+                  </div>
+                    <div class="form-group mt-3">
+                      {{ form.description.error }}
+                      {{ form.description }}
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer text-center">
+
+                </div>
+              </form>
+            </div>
+   </div>
+  <!--show users list -->
+    <div class="col-md-8">
+            <div class="card">
+              <div class="card-header bg-warning">
+                <h3 class="card-title">لیست خوراک</h3>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="جستجو">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search" style="color:green"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover table-bordered text-center">
+                  <thead>
+                  <tr>
+                    <th class="col-sm-3">نام خوراک</th>
+                    <th class="col-sm-2">دسته</th>
+                    <th class="col-sm-2">قیمت</th>
+                    <th class="col-sm-1">تغییر</th>
+                    <th class="col-sm-1">حذف</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in items %}
+                  <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.cat }}</td>
+                    <td>{{ i.price }}</td>
+                    <form action="{% url 'update_food' i.id %}" method="get" novalidate>{% csrf_token %}
+                    <td class="text-center"><button href="{% url 'update_food' i.id %}" class="btn-sm btn-primary">
+                      <i class="fa fa-edit" style="color: white;"></i></button></td>
+                    <form action="{% url 'del_food' i.id %}" method="post" novalidate>{% csrf_token %}
+                      <td class="text-center"><button class="btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                    </form>
+                  </tr>
+                  {% endfor %}
+                </tbody></table>
+              </div>
+              <!-- /.card-body -->
+              <!-- pagination -->
+              <div class="card-footer">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center bg-warning">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- end pagination -->
+            </div>
+            <!-- /.card -->
+    </div>
+  <!--end sow uses list-->
+  </div>
+{% endblock %}

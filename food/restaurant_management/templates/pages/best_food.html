@@ -1,0 +1,49 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} نمودار فروش {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %} نمودار فروش {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+    <div class="row">
+        <div class="col-2 mx-2">
+            <input type="text" class="form-control" name="start_dt" id="persianDatapicker" placeholder="از تاریخ">
+        </div>
+        <div class="col-2 mx-2">
+            <input type="text" class="form-control" name="end_dt" id="persianDatapicker2" placeholder="تا تاریخ">
+        </div>
+        <div class="form-group col-3 mx-2 text-center">
+            <button type="submit" class="btn btn-success">جستجو</button>
+        </div>
+     </div>
+</form>
+<div class="card-body">
+    <canvas id="myChart" class="col-8"></canvas>
+ </div>
+
+<script>
+var chart_labels = JSON.parse('{{labels}}')
+var chart_data = JSON.parse('{{data}}')
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: chart_labels,
+        datasets: [{
+            label: "نمودار فروش غذا",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: chart_data,
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+
+{% endblock %}

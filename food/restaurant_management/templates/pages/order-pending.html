@@ -1,0 +1,111 @@
+{% extends 'restaurant_admin_template.html' %}
+{% load jformat %}
+{% block title %} پیگیری سفارش {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block breadcrumb %} پیگیری سفارش {% endblock %}
+{% block content %}
+<div class="card card-primary mx-2">
+      <div class="card-header text-center">
+          <h3 class="card-title">جستجوی سفارش</h3>
+      </div>
+      <div class="cad-body">
+       <form role="form" action="" method="post">{% csrf_token %}
+       <div class="row">
+        <div class="col-2 m-1">
+           <div class="form-group">
+            <input class="form-control" name="search_id" type="text" placeholder="شماره فاکتور" id="fid" />
+           </div>
+        </div>
+        <div class="col-2 m-1 form-control bg-info h-75">
+            <select class="select2 w-100" name="search_name" id="customer">
+                <option disabled selected hidden="hidden" value="">انتخاب مشتری</option>
+                {% for c in customers %}
+                <option>{{ c }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-2 m-1">
+            <input type="text" class="form-control" name="start_dt" id="persianDatapicker" placeholder="از تاریخ">
+        </div>
+        <div class="col-2 m-1">
+            <input type="text" class="form-control" name="end_dt" id="persianDatapicker2" placeholder="تا تاریخ">
+        </div>
+        <div class="form-group col-3 mt-1 text-center">
+            <button type="submit" class="btn btn-success">جستجو</button>
+        </div>
+      </div>
+           <div class="col-2 my-2">
+            <div class="pretty p-icon p-curve p-jelly">
+               <input type="checkbox" name="not_paid" onchange="document.getElementById('fid').disabled = this.checked;"/>
+               <div class="state p-primary">
+                   <i class="icon fas fa-check"></i>
+                   <label style="direction:ltr">پرداخت نشده</label>
+               </div>
+            </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card m-2">
+     <div class="card-header bg-warning text-center">
+         <h3 class="card-title text-info">نتایج جستجو</h3>
+     </div>
+     <div class="card-body">
+         <table class="table table-bordered text-center">
+           <tbody>
+             <tr>
+                 <th class="col-1">شماره فاکتور</th>
+                 <th class="col-2">نام مشتری</th>
+                 <th class="col-2">وضعیت پرداخت</th>
+                 <th class="col-3">تاریخ سفارش</th>
+                 <th class="col-2">مبلغ سفارش</th>
+                 <th class="col-2">جز‌‌ئیات فاکتور</th>
+             </tr>
+             {% for f in factor %}
+                 <tr class="text-center">
+                     <td>{{ f.id }}</td>
+                     <td>{{ f.customer.name }}</td>
+                     <td class="badge {% if factor.p_stat %}bg-green{% else %}bg-danger{% endif %} mt-1">{{ f.get_payment }}</td>
+                     <td>{{ f.created|jformat:'%H:%M   %Y-%m-%d' }}</td>
+                     <td><span class="badge bg-danger">{{ f.get_total_price }}</span></td>
+                     <td class="text-center"><button data-toggle="modal" data-target="#modalFactor-{{ f.id }}">
+                             <i class="fas fa-eye" style="color:green;"></i></button>
+                     </td>
+
+                                             <!-- Modal -->
+  <!--Modal: Login with Avatar Form-->
+<div class="modal fade" id="modalFactor-{{ f.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal modal-avatar modal-lg" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
+      </div>
+      <!--Body-->
+      <div class="modal-body text-center mb-1">
+            <div class="card-body">
+                {% for o in f.orders.all %}
+                <div class="row">
+                    <div class="col-3">{{o.product.name}}</div>
+                    <div class="col-3">{{o.quantity}}</div>
+                    <div class="col-3">{{o.get_total_price}}</div>
+                </div>
+                {% endfor %}
+             </div>
+       </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+
+                 </tr>
+            {% endfor %}
+           </tbody></table>
+     </div>
+              <!-- /.card-body -->
+            <!-- /.card -->
+    </div>
+
+{% endblock %}

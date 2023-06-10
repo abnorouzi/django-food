@@ -1,0 +1,28 @@
+{% extends 'restaurant_admin_template.html' %}
+{% block title %} افزودن نقش جدید {% endblock %}
+{% block manager_name %} نام مدیر {% endblock %}
+{% block bread-second %}
+<li class="breadcrumb-item"><a href="{% url 'res_users' %}"> مدیریت کاربران </a></li>
+{% endblock %}
+{% block breadcrumb %} ایجاد نقش جدید {% endblock %}
+{% block content %}
+        <div class="card card-primary m-3 p-3 col-7">
+              <div class="card-header">
+                <h3 class="card-title">افزودن نقش جدید</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form" role="form" >
+               <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control mt-2" id="role" placeholder="یک نام بنویسید">
+                  </div>
+                    <div class="col-3"><button class="btn-sm btn-success mt-2">افزودن به لیست</button></div>
+
+                </div>
+               </div>
+              </form>
+        </div>
+        </div>
+{% endblock %}
